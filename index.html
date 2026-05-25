@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Экзопланеты</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <main class="story" aria-live="polite">
+      <div class="track" id="track">
+        <section class="slide cover" data-section="cover">
+          <div class="grain"></div>
+          <div class="cover-copy">
+            <p class="eyebrow">NASA Exoplanet Archive</p>
+            <h1>ЭКЗОПЛАНЕТЫ</h1>
+            <p class="lead">Как человечество находит планеты за пределами Солнечной системы</p>
+            <p class="caption">Инфографика по данным NASA Exoplanet Archive</p>
+          </div>
+          <div class="cover-orbit" aria-hidden="true"></div>
+          <div class="cover-gradient" aria-hidden="true"></div>
+        </section>
+
+        <section class="slide chart-slide">
+          <div class="slide-copy">
+            <p class="eyebrow">01 / история открытий</p>
+            <h2>Как находили экзопланеты</h2>
+            <p class="subtitle">Количество подтверждённых экзопланет по годам и способам обнаружения</p>
+          </div>
+          <div class="visual timeline-layout">
+            <div id="timelineChart" class="chart"></div>
+            <aside id="timelineLegend" class="legend-panel" aria-label="Легенда способов обнаружения"></aside>
+          </div>
+        </section>
+
+        <section class="slide chart-slide">
+          <div class="slide-copy">
+            <p class="eyebrow">02 / методы</p>
+            <h2>Как замечают далёкие планеты</h2>
+            <p class="subtitle">Большинство экзопланет находят не напрямую, а по изменениям света или движения их звёзд</p>
+          </div>
+          <div id="methodsChart" class="visual chart"></div>
+        </section>
+
+        <section class="slide chart-slide">
+          <div class="slide-copy">
+            <p class="eyebrow">03 / масштаб</p>
+            <h2>Размеры других миров</h2>
+            <p class="subtitle">Сравнение размерных групп экзопланет по радиусу относительно Земли</p>
+          </div>
+          <div id="sizeChart" class="visual chart"></div>
+        </section>
+
+        <section class="slide chart-slide">
+          <div class="slide-copy">
+            <p class="eyebrow">04 / орбиты</p>
+            <h2>Сколько длится год</h2>
+            <p class="subtitle">Орбитальные периоды экзопланет: от нескольких дней до многих земных лет</p>
+          </div>
+          <div id="periodChart" class="visual chart"></div>
+        </section>
+
+        <section class="slide chart-slide">
+          <div class="slide-copy">
+            <p class="eyebrow">05 / расстояние</p>
+            <h2>Как далеко они находятся</h2>
+            <p class="subtitle">Распределение подтверждённых экзопланет по расстоянию от Земли</p>
+          </div>
+          <div id="distanceChart" class="visual chart"></div>
+        </section>
+      </div>
+    </main>
+
+    <nav class="story-nav" aria-label="Навигация по истории">
+      <button class="nav-button" id="prevBtn" type="button" aria-label="Предыдущий раздел">
+        <span aria-hidden="true">←</span>
+      </button>
+      <div class="counter" id="counter">01 / 06</div>
+      <button class="nav-button" id="nextBtn" type="button" aria-label="Следующий раздел">
+        <span aria-hidden="true">→</span>
+      </button>
+    </nav>
+
+    <script src="assets/js/d3.v7.min.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
