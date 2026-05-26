@@ -615,6 +615,40 @@ function drawPeriod(rows) {
       });
   }
 
+  const largestArc = arcs.reduce((max, item) => item.data.count > max.data.count ? item : max, arcs[0]);
+  const smallestArc = arcs.reduce((min, item) => item.data.count < min.data.count ? item : min, arcs[0]);
+  const highlightedArcs = [
+    { arc: largestArc, label: "самый большой сектор", side: 1 },
+    { arc: smallestArc, label: "самый маленький сектор", side: -1 }
+  ];
+
+  const sliceLabel = chart.selectAll("g.period-slice-note")
+    .data(highlightedArcs)
+    .join("g")
+    .attr("class", "period-slice-note");
+
+  sliceLabel.append("path")
+    .attr("class", "period-callout")
+    .attr("d", d => {
+      const start = outerArc.centroid(d.arc);
+      const endX = start[0] + d.side * (isMobile ? 24 : 42);
+      const endY = start[1] + (d.side > 0 ? 10 : -12);
+      return `M${start[0]},${start[1]} L${endX},${endY}`;
+    });
+
+  sliceLabel.append("text")
+    .attr("class", "period-slice-label")
+    .attr("x", d => {
+      if (isMobile && d.arc.data.name === largestArc.data.name) return radius * 1.45;
+      return outerArc.centroid(d.arc)[0] + d.side * (isMobile ? 30 : 50);
+    })
+    .attr("y", d => outerArc.centroid(d.arc)[1] + (d.side > 0 ? 14 : -16))
+    .attr("text-anchor", d => {
+      if (isMobile && d.arc.data.name === largestArc.data.name) return "end";
+      return d.side > 0 ? "start" : "end";
+    })
+    .text(d => `${d.arc.data.label} · ${Math.round(d.arc.data.count / total * 100)}%`);
+
   const legendX = isMobile ? width * 0.07 : width * 0.67;
   const legendY = isMobile ? height * 0.68 : height * 0.22;
   const legendGap = isMobile ? 34 : 38;
